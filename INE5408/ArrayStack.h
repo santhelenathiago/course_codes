@@ -1,7 +1,7 @@
 /// Copyright 2018 Thiago Sant' Helena
 
-#ifndef STRUCTURES_ARRAY_STACK_H
-#define STRUCTURES_ARRAY_STACK_H
+#ifndef INE5408_ARRAYSTACK_H_
+#define INE5408_ARRAYSTACK_H_
 
 #include <cstdint>  // std::size_t
 #include <stdexcept>  // C++ exceptions
@@ -18,7 +18,7 @@ class ArrayStack {
     /// Construtor com tamanho
     explicit ArrayStack(std::size_t max);
 
-    ~ArrayStack();
+    ~ArrayStack() = default;
 
     /// empilha
     void push(const T& data);
@@ -75,23 +75,23 @@ structures::ArrayStack<T>::~ArrayStack() {
 
 template <typename T>
 void structures::ArrayStack<T>::push(const T& data) {
-    if (this->top_ < static_cast<int>(this->max_size_-1)) {
-        this->top_ += 1;
-        this->contents[this->top_] = data;
-    } else {
+    if (!this->top_ < static_cast<int>(this->max_size_-1)) {
         throw std::out_of_range("Stack overflow");
     }
+
+    this->top_ += 1;
+    this->contents[this->top_] = data;
 }
 
 template <typename T>
 T structures::ArrayStack<T>::pop() {
-    if (!this->empty()) {
-        int tmp = this->top_;
-        this->top_ -= 1;
-        return this->contents[tmp];
-    } else {
+    if (this->empty()) {
         throw std::out_of_range("Stack is empty");
     }
+
+    int tmp = this->top_;
+    this->top_ -= 1;
+    return this->contents[tmp];
 }
 
 template <typename T>
@@ -106,7 +106,7 @@ void structures::ArrayStack<T>::clear() {
 
 template <typename T>
 std::size_t structures::ArrayStack<T>::size() {
-    return (std::size_t) this->top_ + 1;
+    return this->top_ + 1;
 }
 
 template <typename T>
@@ -124,5 +124,4 @@ bool structures::ArrayStack<T>::empty() {
     return this->top_ == -1;
 }
 
-
-#endif
+#endif  // INE5408_ARRAYSTACK_H_

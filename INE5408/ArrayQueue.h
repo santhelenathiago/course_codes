@@ -1,7 +1,7 @@
 /// Copyright 2018 Thiago Sant' Helena
 
-#ifndef STRUCTURES_ARRAY_QUEUE_H
-#define STRUCTURES_ARRAY_QUEUE_H
+#ifndef INE5408_ARRAYQUEUE_H_
+#define INE5408_ARRAYQUEUE_H_
 
 #include <cstdint>  // std::size_t
 #include <stdexcept>  // C++ Exceptions
@@ -20,7 +20,7 @@ class ArrayQueue {
     explicit ArrayQueue(std::size_t max);
 
     /// Destructor
-    ~ArrayQueue();
+    ~ArrayQueue() = default;
 
     ///  Add element
     void enqueue(const T& data);
@@ -72,46 +72,39 @@ structures::ArrayQueue<T>::ArrayQueue(std::size_t max) {
 }
 
 template <typename T>
-structures::ArrayQueue<T>::~ArrayQueue() {
-}
-
-template <typename T>
 void structures::ArrayQueue<T>::enqueue(const T& data) {
     if (this->full()) {
         throw std::out_of_range("Queue overflow");
-
-    } else {
-        this->contents[this->size_] = data;
-        this->size_++;
     }
+
+    this->contents[this->size_] = data;
+    this->size_++;
 }
 
 template <typename T>
 T structures::ArrayQueue<T>::dequeue() {
     if (this->empty()) {
         throw std::out_of_range("Empty queue");
-
-    } else {
-        T tmp = this->contents[0];
-
-        this->size_--;
-
-        for (int i = 0; i < static_cast<int>(this->size_); i++) {
-            this->contents[i] = this->contents[i+1];
-        }
-
-        return tmp;
     }
+
+    T tmp = this->contents[0];
+
+    this->size_--;
+
+    for (int i = 0; i < static_cast<int>(this->size_); i++) {
+        this->contents[i] = this->contents[i+1];
+    }
+
+    return tmp;
 }
 
 template <typename T>
 T& structures::ArrayQueue<T>::back() {
     if (this->empty()) {
         throw std::out_of_range("Empty queue");
-
-    } else {
-        return this->contents[this->size_-1];
     }
+
+    return this->contents[this->size_-1];
 }
 
 template <typename T>
@@ -139,4 +132,4 @@ bool structures::ArrayQueue<T>::empty() {
     return this->size_ == 0;
 }
 
-#endif
+#endif  // INE5408_ARRAYQUEUE_H_
