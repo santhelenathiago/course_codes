@@ -4,6 +4,7 @@ import numpy as np
 def solve_gauss(A, b):
     '''
         @param A  input matrix
+        @param b  input results column
         @return   column-matrix solution of system
     '''
     n = len(A)  # n = dimension of A

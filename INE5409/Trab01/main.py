@@ -5,6 +5,7 @@ from functions.gauss_direct import *
 from functions.residuo import *
 from functions.dominance import *
 from functions.gauss_seidel import *
+from functions.gauss_optimized import *
 
 if __name__ == '__main__':
     n = 50
@@ -14,19 +15,19 @@ if __name__ == '__main__':
     A, b = generate_mat(n)
     x_crout = solve_LUCrout(A, b)
 
-    print("a2):")
+    print("\na2):")
     print("Primeira: " + str(x_crout[0, 0]))
     print("ùltima: " + str(x_crout[n-1, 0]))
 
     # Numero de operações aritméticas
     op_num_crout = (4*(n**3) + 15*(n**2) - 7*n - 6)/6
-    print("Número total de operações em ponto flutuante: " + str(op_num_crout))
+    print("Número de operações em ponto flutuante: " + str(op_num_crout))
 
     # Letra b
     print("\n########## Método de Gauss ##########\n")
 
     x_gauss = solve_gauss(A, b)
-    print("b2):")
+    print("\nb2):")
     print("Primeira: " + str(x_gauss[0, 0]))
     print("Última: " + str(x_gauss[n-1, 0]))
     max_resid = max(residual(A, b, x_gauss).reshape((1, n)).tolist()[0])
@@ -34,7 +35,21 @@ if __name__ == '__main__':
 
     op_num_gauss = (4 * (n**3) + 15 * (n**2) - n - 6)/6
 
-    print("Número de operações: " + str(op_num_gauss))
+    print("Número de operações em ponto flutuante: " + str(op_num_gauss))
+
+    print("\n########## Método de Gauss Otimizado ##########\n")
+
+    x_gauss_optimized = solve_gauss_optimized_tridiag(A, b)
+    print("\nb2):")
+    print("Primeira: " + str(x_gauss_optimized[0, 0]))
+    print("Última: " + str(x_gauss_optimized[n-1, 0]))
+    max_resid_go = max(
+        residual(A, b, x_gauss_optimized).reshape((1, n)).tolist()[0])
+    print("Resíduo máximo: " + str(max_resid))
+
+    op_num_gauss_opt = 8*n - 7
+
+    print("Número de operações em ponto flutuante: " + str(op_num_gauss_opt))
 
     # Letra c
     criteria = 0.0001
@@ -75,7 +90,7 @@ if __name__ == '__main__':
     iterative = solve_gauss_seidel(lamb, A, b, criteria)
     max_resid_i = max(residual(A, b, iterative[0]).reshape((1, n)).tolist()[0])
 
-    print("c3):")
+    print("\nc3):")
     print("Lambda utilizado: " + str(lamb))
     print("Primeira: " + str(iterative[0][0, 0]))
     print("Última: " + str(iterative[0][n-1, 0]))
@@ -83,7 +98,7 @@ if __name__ == '__main__':
 
     op_num_iterative = iterative[1]*(5 + ((n-2)*8) + 5 + n)
 
-    print("c4):")
+    print("\nc4):")
     print("Iterações: " + str(iterative[1]))
     print("Número de operações em ponto flutuante: " +
           str((float(op_num_iterative))))
@@ -99,4 +114,5 @@ if __name__ == '__main__':
     print("\n########## Número de operações em ponto flutuante ##########\n")
     print("Método de decomposição LU de Crout: " + str(op_num_crout))
     print("Método direto de Gauss: " + str(op_num_gauss))
+    print("Método direto de Gauss Otimizado: " + str(float(op_num_gauss_opt)))
     print("Método iterativo de Gauss-Seidel: " + str(float(op_num_iterative)))

@@ -15,7 +15,7 @@ def residual(A, b, x):
     assert(b.shape == x.shape)
 
     for row in range(n):
-        r[row, 0] = b[row, 0] - sum(A[row, col] * x[row, 0]
-                                    for col in range(n))
+        r[row, 0] = b[row, 0] - sum(A[row, i] * x[i, 0]
+                                    for i in range(n))
 
     return r

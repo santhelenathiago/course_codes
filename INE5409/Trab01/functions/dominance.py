@@ -12,11 +12,11 @@ def diag_dominant(A):
     for i in range(n):
 
         # check if
-        amount = sum(A[i, j] for j in range(n) if j != i)
-        if A[i, i] < amount:
+        amount = sum(abs(A[i, j]) for j in range(n) if j != i)
+        if abs(A[i, i]) < amount:
             a = False
 
-        if A[i, i] > amount:
+        if abs(A[i, i]) > amount:
             b = True
 
     return a and b
@@ -32,8 +32,8 @@ def strong_diag_dominant(A):
     for i in range(n):
 
         # check if
-        amount = sum(A[i, j] for j in range(n) if j != i)
-        if A[i, i] <= amount:
+        amount = sum(abs(A[i, j]) for j in range(n) if j != i)
+        if abs(A[i, i]) <= amount:
             a = False
 
     return a
