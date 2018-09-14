@@ -27,7 +27,7 @@ void* compute_thread(void* arg) {
     thread_data_t* data = malloc(sizeof(thread_data_t));
     data = (thread_data_t*) arg;
     compute(data->arg, &data->sum);
-
+    free(data);
     return NULL;
 }
 

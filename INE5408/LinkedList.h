@@ -93,7 +93,6 @@ class LinkedList {
             // If reach the last object, push on last pos
             if (it == nullptr) {
                 this->push_back(data);
-                this->size_++;
                 return;
             }
         }
@@ -126,7 +125,7 @@ class LinkedList {
         if (index == 0) {
             return this->pop_front();
         }
-        if (index == this->size() - 1) {
+        if (index == this->size_ - 1) {
             return this->pop_back();
         }
 
