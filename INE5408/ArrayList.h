@@ -17,6 +17,9 @@ class ArrayList {
     //! Default constructor
     ArrayList();
 
+    //! Move constructor
+    ArrayList(ArrayList&&) = default;
+
     //! Parameter constructor
     explicit ArrayList(std::size_t max_size);
 
@@ -92,7 +95,9 @@ class ArrayList {
 
 template <typename T>
 structures::ArrayList<T>::ArrayList() {
-    this->ArrayList(this->DEFAULT_MAX);
+    this->size_ = 0;
+    this->max_size_ = this->DEFAULT_MAX;
+    this->contents = std::unique_ptr<T[]>(new T[this->DEFAULT_MAX]);
 }
 
 template <typename T>

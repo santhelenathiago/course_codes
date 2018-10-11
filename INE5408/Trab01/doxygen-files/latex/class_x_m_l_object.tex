@@ -1,0 +1,114 @@
+\hypertarget{class_x_m_l_object}{}\section{X\+M\+L\+Object Class Reference}
+\label{class_x_m_l_object}\index{X\+M\+L\+Object@{X\+M\+L\+Object}}
+
+
+xml Object  
+
+
+
+
+{\ttfamily \#include $<$X\+M\+L\+Object.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_x_m_l_object_a4bc5942fe99811ae8aadd1d59e372063}{X\+M\+L\+Object}} (const std\+::string \&input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Move constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_m_l_object_a2dd56725772090aff6c954651d3ddebb}{$\sim$\+X\+M\+L\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_x_m_l_object_a14d88964a98069618d6eb370fdb5bcc8}{is\+\_\+opened}} ()
+\begin{DoxyCompactList}\small\item\em Check if object was correctly opened. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ char $>$ $>$ $>$ \mbox{\hyperlink{class_x_m_l_object_ad13f036055b76b4d2d08e64f85703df0}{data}} ()
+\begin{DoxyCompactList}\small\item\em Get content of data tags, organized in vectors. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_x_m_l_object_ad418af64a7ad3050842e7901ffd0c309}{names}} ()
+\begin{DoxyCompactList}\small\item\em Get content of name tags, organized in a vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_object_ac1819fca641e9dd77c0523b840244819}{print\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em Print data in std\+::cout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+xml Object 
+
+Class to describe X\+ML object, including data in tags and validation of xml files 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_x_m_l_object_a4bc5942fe99811ae8aadd1d59e372063}\label{class_x_m_l_object_a4bc5942fe99811ae8aadd1d59e372063}} 
+\index{X\+M\+L\+Object@{X\+M\+L\+Object}!X\+M\+L\+Object@{X\+M\+L\+Object}}
+\index{X\+M\+L\+Object@{X\+M\+L\+Object}!X\+M\+L\+Object@{X\+M\+L\+Object}}
+\subsubsection{\texorpdfstring{X\+M\+L\+Object()}{XMLObject()}}
+{\footnotesize\ttfamily X\+M\+L\+Object\+::\+X\+M\+L\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Move constructor. 
+
+Constructor with input file
+
+Constructor with input file, initiate every attributte accordingly to input file, also checks if the file is a valid xml. \mbox{\Hypertarget{class_x_m_l_object_a2dd56725772090aff6c954651d3ddebb}\label{class_x_m_l_object_a2dd56725772090aff6c954651d3ddebb}} 
+\index{X\+M\+L\+Object@{X\+M\+L\+Object}!````~X\+M\+L\+Object@{$\sim$\+X\+M\+L\+Object}}
+\index{````~X\+M\+L\+Object@{$\sim$\+X\+M\+L\+Object}!X\+M\+L\+Object@{X\+M\+L\+Object}}
+\subsubsection{\texorpdfstring{$\sim$\+X\+M\+L\+Object()}{~XMLObject()}}
+{\footnotesize\ttfamily X\+M\+L\+Object\+::$\sim$\+X\+M\+L\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Destructor will close input stream 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_m_l_object_ad13f036055b76b4d2d08e64f85703df0}\label{class_x_m_l_object_ad13f036055b76b4d2d08e64f85703df0}} 
+\index{X\+M\+L\+Object@{X\+M\+L\+Object}!data@{data}}
+\index{data@{data}!X\+M\+L\+Object@{X\+M\+L\+Object}}
+\subsubsection{\texorpdfstring{data()}{data()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ char $>$ $>$ $>$ X\+M\+L\+Object\+::data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get content of data tags, organized in vectors. 
+
+\begin{DoxyReturn}{Returns}
+content of data tags organized by tag, ordered by lecture then, by line read in file, each caracter in one position of vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_x_m_l_object_a14d88964a98069618d6eb370fdb5bcc8}\label{class_x_m_l_object_a14d88964a98069618d6eb370fdb5bcc8}} 
+\index{X\+M\+L\+Object@{X\+M\+L\+Object}!is\+\_\+opened@{is\+\_\+opened}}
+\index{is\+\_\+opened@{is\+\_\+opened}!X\+M\+L\+Object@{X\+M\+L\+Object}}
+\subsubsection{\texorpdfstring{is\+\_\+opened()}{is\_opened()}}
+{\footnotesize\ttfamily bool X\+M\+L\+Object\+::is\+\_\+opened (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if object was correctly opened. 
+
+\begin{DoxyReturn}{Returns}
+true if file was validated and attributtes organized, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_x_m_l_object_ad418af64a7ad3050842e7901ffd0c309}\label{class_x_m_l_object_ad418af64a7ad3050842e7901ffd0c309}} 
+\index{X\+M\+L\+Object@{X\+M\+L\+Object}!names@{names}}
+\index{names@{names}!X\+M\+L\+Object@{X\+M\+L\+Object}}
+\subsubsection{\texorpdfstring{names()}{names()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ X\+M\+L\+Object\+::names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get content of name tags, organized in a vector. 
+
+\begin{DoxyReturn}{Returns}
+content of data tags organized by tag, ordered by lecture then, by line read in file, each caracter in one position of vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_x_m_l_object_ac1819fca641e9dd77c0523b840244819}\label{class_x_m_l_object_ac1819fca641e9dd77c0523b840244819}} 
+\index{X\+M\+L\+Object@{X\+M\+L\+Object}!print\+\_\+data@{print\+\_\+data}}
+\index{print\+\_\+data@{print\+\_\+data}!X\+M\+L\+Object@{X\+M\+L\+Object}}
+\subsubsection{\texorpdfstring{print\+\_\+data()}{print\_data()}}
+{\footnotesize\ttfamily void X\+M\+L\+Object\+::print\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print data in std\+::cout. 
+
+For debugging process, prints the data stored, formatted 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+libs\+\_\+src/X\+M\+L\+Object.\+h\item 
+libs\+\_\+src/X\+M\+L\+Object.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,1 @@
+add_library(XMLObject STATIC XMLObject.cpp)

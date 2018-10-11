@@ -1,0 +1,41 @@
+\begin{theindex}
+
+  \item {$\sim$\+X\+M\+L\+Object}
+    \subitem {X\+M\+L\+Object}, \hyperpage{8}
+
+  \indexspace
+
+  \item {data}
+    \subitem {X\+M\+L\+Object}, \hyperpage{9}
+
+  \indexspace
+
+  \item {is\+\_\+opened}
+    \subitem {X\+M\+L\+Object}, \hyperpage{9}
+
+  \indexspace
+
+  \item {names}
+    \subitem {X\+M\+L\+Object}, \hyperpage{9}
+
+  \indexspace
+
+  \item {print\+\_\+data}
+    \subitem {X\+M\+L\+Object}, \hyperpage{9}
+
+  \indexspace
+
+  \item {structures}, \hyperpage{5}
+  \item {structures\+::\+Linked\+Stack$<$ T $>$}, \hyperpage{7}
+
+  \indexspace
+
+  \item {X\+M\+L\+Object}, \hyperpage{8}
+    \subitem {$\sim$\+X\+M\+L\+Object}, \hyperpage{8}
+    \subitem {data}, \hyperpage{9}
+    \subitem {is\+\_\+opened}, \hyperpage{9}
+    \subitem {names}, \hyperpage{9}
+    \subitem {print\+\_\+data}, \hyperpage{9}
+    \subitem {X\+M\+L\+Object}, \hyperpage{8}
+
+\end{theindex}

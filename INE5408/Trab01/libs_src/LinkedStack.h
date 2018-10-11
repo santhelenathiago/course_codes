@@ -1,18 +1,14 @@
-// Copyright 2018 Thiago Sant' Helena
+//! Copyright 2018 Thiago Sant' Helena
 
 #pragma once
 
 #include <memory>
 #include <stdexcept>
 
-
-/*! \namespace structures Structures namespace
- *   \brief Simple namespace to warp LinkedStack
- */
-
 namespace structures {
+
 template<typename T>
-//! Main class of structure
+//! Main class
 class LinkedStack {
  public:
     //! Default constructor
