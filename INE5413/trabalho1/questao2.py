@@ -6,8 +6,8 @@ from sys import argv
 from os import path
             
 if __name__ == '__main__':
-    if len(argv) < 2:
-        print('Uso: python questao2.py <arquivo_descrevendo_grafo>')
+    if len(argv) < 3 or argv[1] in ['-h', '--help']:
+        print('Uso: python questao1.py <arquivo_descrevendo_grafo> <vertice>')
         exit()
 
     filename = argv[1]
@@ -15,9 +15,11 @@ if __name__ == '__main__':
         print('Arquivo não encontrado! [ {} ]'.format(filename))
         exit()
 
+    v = int(argv[2])
+
     g = Grafo(filename)
 
-    D, A = functions.bfs(g, 1)    
+    D, A = functions.bfs(g, v)    
     f = 0
     while True:
         row = [k for k in D.keys() if D[k] == f]

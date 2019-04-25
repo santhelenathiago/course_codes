@@ -16,16 +16,9 @@ def build_path(v, A):
     path.reverse()
     return path
 
-def path_len(path, g, v):
-    d = 0
-    for u, v in zip(path[:-1], path[1:]):
-        d += g.matrix[u-1][v-1]
-
-    return d
-    
 
 if __name__ == '__main__':
-    if len(argv) < 3:
+    if len(argv) < 3 or argv[1] in ['-h', '--help']:
         print('Uso: python questao1.py <arquivo_descrevendo_grafo> <vertice_inicial>')
         exit()
 
@@ -47,6 +40,5 @@ if __name__ == '__main__':
     for v in D:
         path = build_path(v, A)
 
-        d = path_len(path, g, v)
         str_path = str(path)[1: -1].replace(' ', '')
-        print('{}: {}; d={:.2f}'.format(v, str_path, d))
+        print('{}: {}; d={:.2f}'.format(v, str_path, D[v]))

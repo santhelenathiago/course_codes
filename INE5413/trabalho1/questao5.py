@@ -4,7 +4,10 @@ from structures.grafo_ponderado import Grafo
 from src import functions
 from sys import argv
 from os import path
-            
+
+# Debuging option
+DEBUG = False
+
 if __name__ == '__main__':
     if len(argv) < 2 or argv[1] in ['-h', '--help']:
         print('Uso: python questao1.py <arquivo_descrevendo_grafo>')
@@ -15,15 +18,22 @@ if __name__ == '__main__':
         print('Arquivo não encontrado! [ {} ]'.format(filename))
         exit()
 
+
     g = Grafo(filename)
 
-    r, cicle = functions.hierholzer(g)
+    D = functions.floyd_warshall(g)
 
-    if not r:
-        print(0)
+    for i, row in enumerate(D):
+        distances = ''
+        for e in row:
+            distances += '{:.2f},'.format(e)
+        
+        # Printando até -1 para tirar a última vírgula
+        print('{}:{}'.format(i+1, distances[:-1]))
 
-    else:
-        print(1)
-        print(str(cicle)[1:-1].replace(' ', ''))
+        if DEBUG:
+            for j, e in enumerate(row):
+                print('{} -> {} = {:.2f}'.format(i+1, j+1, e))
 
-    
+            break
+        

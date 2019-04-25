@@ -1,0 +1,19 @@
+A-> Classes primitivas são classes que não são definidas a partir de outras. Exemplos:
+     - Bounded ́e uma classe que estabelece limites m ínimos e m áximos e queinstancia os tipos
+         Int, Char, Bool, (), Orderingetuples. Essa classe define as funções  minBound e max Bound
+     - Eq trata os métodos de igualdade e desigualdade e instancia todosos tipos, com excessão dos tipos IO 
+         e funções.  Define as funções de igualdade e diferença
+     - Show e Read são classes que definem os m étodos de conversão entre números e caracteres e vice-versa.  
+         Estas classes instanciam todos ostipos, exceto IO e funções. Show contém definições para mostrar
+         listas, inteiros, e strings. Read possui métodos para ler inteiro, strings, etc.
+    Classes secundárias são classes definidas a partir de classes  primárias. Exemplos:
+     - Ord define métodos para tipos de dados totalmente ordenados, instanciando todos os tipos, exceto funções, IO
+         e IOError. Define operadores como >, <, <=, >=
+     - Num define os métodos para operações com números e instancia ostipos Int, Integer, FloateDouble.
+         Define operações como +, -, *
+     - Real instancia diversos tipos de dados primitivos e define operadores como `mod` e `div`, além de 
+         conversões como toInteger
+
+B-> 
+
+
