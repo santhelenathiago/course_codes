@@ -1,0 +1,18 @@
+*vertices 6
+1 "Homer Jay Simpson"
+2 "Marge Simpson"
+3 "Ned Flanders,Jr."
+4 "Milhouse Mussolini Van Houten "
+5 "Rod Flanders"
+6 "Todd Flanders"
+*arcs
+1 2 1
+2 1 1
+2 3 1
+3 1 1
+3 2 1
+3 5 1
+3 6 1
+4 1 1
+4 5 1
+4 6 1

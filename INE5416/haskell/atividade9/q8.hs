@@ -166,11 +166,11 @@ validate_sudoku_table :: [[Int]] -> Bool
 validate_sudoku_table table = (validate_sub_tables table 0 0) && (validate_rows table) && (validate_rows (transpose table))
 
 get_0_positions :: [[Int]] -> [[Int]]
-get_0_positions mat = get_0_positions_aux mat 2 2
+get_0_positions mat = get_0_positions_aux mat ((length mat) - 1) ((length mat) - 1)
 
 get_0_positions_aux :: [[Int]] -> Int -> Int -> [[Int]]
 get_0_positions_aux mat x y | (x == -1) = []
-                            | (y == -1) = (get_0_positions_aux mat (x-1) 2)
+                            | (y == -1) = (get_0_positions_aux mat (x-1) ((length mat) - 1))
                             | ((mat!!x)!!y == 0) = [x, y]:(get_0_positions_aux mat x (y-1))
                             | ((mat!!x)!!y /= 0) = (get_0_positions_aux mat x (y-1))
 
