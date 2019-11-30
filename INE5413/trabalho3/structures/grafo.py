@@ -2,11 +2,16 @@ class GrafoNDP:
     """
         Grafo ponderado e não dirigido
     """
-    def __init__(self, file):
+    def __init__(self, file, not_connected=float('inf')):
         '''
             deve carregar um grafo a partir de um arquivo no formato especificado
         '''
+        
+        self.not_connected = not_connected
 
+        self._s = None
+        self._t = None
+        
         # Matrix de pesos e conexões
         self.matrix = list()
 
@@ -17,48 +22,75 @@ class GrafoNDP:
         self._a = 0
 
         with open(file) as f:
-            in_vertices = False
-            in_edges = False
-            num_vertices = 0
+            matrix_created = False
 
             for row in f:
+
                 # Remove quebras de linha
                 s = row.replace('\n', '')
                 # Separa em espaços
                 s = s.split()
 
-                if s[0] == '*vertices':
-                    in_vertices = True
-                    num_vertices = int(s[1])
-                    for _ in range(num_vertices):
-                        self.matrix.append([float('inf') for 
-                                       __ in range(num_vertices)])
+                if not s:
+                    # skip empy lines
                     continue
 
-                elif s[0] == '*edges':
-                    in_vertices = False
-                    in_edges = True
+                if s[0] == 'c':
+                    # Comentário
                     continue
 
-                elif s[0][0] == '#':
-                    continue
+                elif s[0] == 'p':
+                    # Configurando
 
-                if in_vertices:
-                    self.V[int(s[0])] = ''.join([' ' + i for i in s[1:]])
+                    self._a = int(s[3])
 
-                if in_edges:
-                    # Normaliza para 0-indexed, para ter coerência
-                    # com a matrix armazenada
-                    v = int(s[0])-1
-                    u = int(s[1])-1
+                    num_vertices = int(s[2])
 
-                    p = float(s[2])
+                    for i in range(num_vertices):
+                        self.V[i+1] = i+1
+                        
+                        self.matrix.append([not_connected 
+                                            for _ in range(num_vertices)])
 
-                    # Insere nas duas direções
-                    self.matrix[v][u] = p
-                    self.matrix[u][v] = p
+                    matrix_created = True
 
-                    self._a += 1
+                elif s[0] == 'n':
+                    if s[2] == 's':
+                        self._s = int(s[1])
+
+                    elif s[2] == 't':
+                        self._t = int(s[1])
+
+                elif s[0] == 'e' and matrix_created:
+                    # Entrada de aresta
+                    e1 = int(s[1]) - 1
+                    e2 = int(s[2]) - 1
+
+                    try:
+                        weight = int(s[3])
+
+                    except IndexError:
+                        weight = 1 if not_connected == float('inf') else float('int')
+
+                    self.matrix[e1][e2] = weight
+                    self.matrix[e2][e1] = weight
+
+    @property
+    def s(self):
+        if self._s is None:
+            return 1
+
+        else:
+            return self._s
+
+    @property
+    def t(self):
+        if self._t is None:
+            return max(self.V)
+
+        else:
+            return self._t
+                
                 
     def view_of_E(self):
         view = list()
@@ -156,22 +188,22 @@ class GrafoD:
             deve carregar um grafo a partir de um arquivo no formato especificado
         '''
 
+        self.not_connected = not_connected
+
+        self._s = None
+        self._t = None
+        
         # Matrix de pesos e conexões
         self.matrix = list()
 
         # Lista de rotulos de vertices
         self.V = dict()
 
-        # Seta valor que representa o não conectado
-        self.not_connected = not_connected
-
         # Contador de arestas
         self._a = 0
 
         with open(file) as f:
-            in_vertices = False
-            in_edges = False
-            num_vertices = 0
+            matrix_created = False
 
             for row in f:
                 # Remove quebras de linha
@@ -179,36 +211,64 @@ class GrafoD:
                 # Separa em espaços
                 s = s.split()
 
-                if s[0] == '*vertices':
-                    in_vertices = True
-                    num_vertices = int(s[1])
-                    for _ in range(num_vertices):
-                        self.matrix.append([not_connected for 
-                                       __ in range(num_vertices)])
+                if not s:
+                    # skip empy lines
                     continue
 
-                elif s[0] == '*arcs':
-                    in_vertices = False
-                    in_edges = True
+                if s[0] == 'c':
+                    # Comentário
                     continue
 
-                elif s[0][0] == '#':
-                    continue
+                elif s[0] == 'p':
+                    # Configurando
 
-                if in_vertices:
-                    self.V[int(s[0])] = ''.join([' ' + i for i in s[1:]])
+                    self._a = int(s[3])
 
-                if in_edges:
-                    # Normaliza para 0-indexed, para ter coerência
-                    # com a matrix armazenada
-                    v = int(s[0])-1
-                    u = int(s[1])-1
+                    num_vertices = int(s[2])
 
-                    p = float(s[2])
+                    for i in range(num_vertices):
+                        self.V[i+1] = i+1
+                        
+                        self.matrix.append([not_connected 
+                                            for _ in range(num_vertices)])
 
-                    self.matrix[v][u] = p
+                    matrix_created = True
 
-                    self._a += 1
+                elif s[0] == 'n':
+                    if s[2] == 's':
+                        self._s = int(s[1])
+
+                    elif s[2] == 't':
+                        self._t = int(s[1])
+
+                elif s[0] == 'a' and matrix_created:
+                    # Entrada de arco
+                    e1 = int(s[1]) - 1
+                    e2 = int(s[2]) - 1
+
+                    try:
+                        weight = int(s[3])
+
+                    except IndexError:
+                        weight = 1 if not_connected == float('inf') else float('int')
+
+                    self.matrix[e1][e2] = weight
+
+    @property
+    def s(self):
+        if self._s is None:
+            return 1
+
+        else:
+            return self._s
+
+    @property
+    def t(self):
+        if self._t is None:
+            return max(self.V)
+
+        else:
+            return self._t
                 
     def view_of_E(self):
         view = list()
@@ -297,5 +357,3 @@ class GrafoD:
         v -= 1
 
         return self.matrix[u][v]
-
-

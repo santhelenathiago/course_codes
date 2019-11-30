@@ -169,12 +169,12 @@ def list_of_combs(arr):
         
         
 
-def lawler(G):
-    X = [None] * 2**len(G.V)
-    X[0] = 0
-    Ss = list_of_combs(G.V.keys())
+# def lawler(G):
+#     X = [None] * 2**len(G.V)
+#     X[0] = 0
+#     Ss = list_of_combs(G.V.keys())
 
-    for S in Ss:
-        s = f(S)
-        X[s] = float('inf')
-        Gt = 
+#     for S in Ss:
+#         s = f(S)
+#         X[s] = float('inf')
+#         Gt = 

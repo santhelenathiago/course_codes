@@ -1,0 +1,9 @@
+ANS -> O registro na ANS é exigido de todas as empresas que comercializam planos de saúde no Brasil. Os planos de saúde, igualmente, têm que ser registrados na ANS.
+
+CBO -> Código Brasileiro de Ocupação
+
+CBO S -> Especialidade do médico
+
+CNES -> Cadastro Nacional de Estabelecimento de Saúde
+
+OPM -> Órtese, Prótese e Medicamentos

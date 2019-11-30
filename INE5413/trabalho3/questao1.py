@@ -8,8 +8,8 @@ from os import path
 def main(filename):
     g = Grafo(filename, not_connected=0)
 
-    source = 1
-    sink = max(g.V.keys())
+    source = g.s
+    sink = g.t
 
     m = functions.edmonds_karp(g, source, sink)
 
@@ -17,7 +17,7 @@ def main(filename):
 
 
 if __name__ == '__main__':
-    if len(argv) < 1 or argv[1] in ['-h', '--help']:
+    if len(argv) < 2 or argv[1] in ['-h', '--help']:
         print('Uso: python questao1.py <arquivo_descrevendo_grafo>')
         exit()
 
